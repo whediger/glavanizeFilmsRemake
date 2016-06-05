@@ -1,2 +1,15 @@
 @import '_variables';
 @import '_mixins';
+
+.intro {
+  background: url(../images/intro-bg.jpeg) no-repeat bottom center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.download-section {
+  background: url(../images/downloads-bg.jpg) no-repeat center center scroll;
+}
