@@ -1,29 +1,17 @@
 {
-  "name": "galvanize-films-remake",
-  "version": "1.0.0",
-  "description": "node used to create simple movie review app",
-  "main": "index.js",
+  "name": "galvanizeFilmsRemake",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/whediger/glavanizeFilmsRemake.git"
-  },
-  "keywords": [
-    "movie",
-    "reviews",
-    "simple",
-    "webpage",
-    "unimpressive"
-  ],
-  "author": "Wes Hediger",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/whediger/glavanizeFilmsRemake/issues"
-  },
-  "homepage": "https://github.com/whediger/glavanizeFilmsRemake#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "hbs": "~3.1.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
   }
 }
