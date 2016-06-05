@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build-css": "node-sass --include-path scss public/sass/moviestyle.scss public/stylesheets/moviestyle.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "start": "node ./bin/www"
   },
   "dependencies": {
