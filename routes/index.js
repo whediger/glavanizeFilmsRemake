@@ -13,24 +13,22 @@ function getMovieData() {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Movie Guide' });
+router.get('/', function(request, response, next) {
+  //response.render('index', { title: 'Movie Guide' });
 
   getMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movies = { movies: [] };
     for ( var i = 0; i < 5; i++ ) {
-      movies.movies[i] = { title: movieData.results[i].title }
-      console.log(movies.movies[i].title)
+      movies.movies[i] = { title: '"' + movieData.results[i].title + '"' };
+      console.log(movies.movies[i].title);
     }
+    console.log(movies);
+
+    response.render('index', movies);
 
   });
 
-
-    // response.render('how-to-shoot-a-bow', { steps: information.firstSteps,
-    //   title: 'First Steps',
-    //   back: '/how-to-shoot-a-bow-part-3',
-    //   next: "/how-to-shoot-a-bow-part-2"})
 
 });
 
