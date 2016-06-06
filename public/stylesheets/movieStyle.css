@@ -265,6 +265,10 @@ body {
 .navbar-custom a {
   color: #E37A23; }
 
+#tmdb-logo {
+  height: 3em;
+  margin-left: 5vw; }
+
 .brand-heading {
   color: #B60E0E; }
 
