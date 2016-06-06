@@ -4,7 +4,7 @@ var router = express.Router();
 
 function getMovieData() {
   return new Promise(function(fulfill, reject){
-    request('http://api.themoviedb.org/3/movie/upcoming/?api_key=b2c319d64cba3280f7ee6977b9a470e0',
+    request('https://api.themoviedb.org/3/movie/upcoming/?api_key=b2c319d64cba3280f7ee6977b9a470e0',
       function(error, response, data){
         if (error) reject(error);
         else fulfill(data);
@@ -15,8 +15,16 @@ function getMovieData() {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Movie Guide' });
-//var movieData =
-getMovieData().then(function(movieData){console.log(movieData)});
+
+  getMovieData().then(function(data){
+    var movieData = JSON.parse(data);
+    var movies = { movies: [] };
+    for ( var i = 0; i < 5; i++ ) {
+      movies.movies[i] = { title: movieData.results[i].title }
+      console.log(movies.movies[i].title)
+    }
+
+  });
 
 
     // response.render('how-to-shoot-a-bow', { steps: information.firstSteps,
