@@ -19,7 +19,7 @@ router.get('/', function(request, response, next) {
   getMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movies = { movies: [] };
-    for ( var i = 0; i < 5; i++ ) {
+    for ( var i = 0; i < 10; i++ ) {
       movies.movies[i] = { title: movieData.results[i].title,
                             movieId: "movie" + i};
       console.log(movies.movies[i].title);
