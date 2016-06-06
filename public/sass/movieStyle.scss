@@ -2,6 +2,35 @@
 @import '_mixins';
 @import 'grayscale';
 
+.navbar-custom {
+  .navbar-toggle {
+    color: $nav-text;
+  }
+  a {
+    color: $nav-text;
+  }
+}
+
+.brand-heading {
+  color: $headline;
+}
+
+.download-section {
+  h2 {
+    color: $nav-text;
+  }
+}
+
+#contact h2 {
+  color: $nav-text;
+}
+
+#about {
+  h2 {
+    color: $nav-text;
+  }
+}
+
 .intro {
   background: url(../images/intro-bg.png) no-repeat bottom center scroll;
   background-color: black;

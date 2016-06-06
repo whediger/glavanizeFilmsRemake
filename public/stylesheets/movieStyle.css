@@ -259,6 +259,24 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); }
 
+.navbar-custom .navbar-toggle {
+  color: #E37A23; }
+
+.navbar-custom a {
+  color: #E37A23; }
+
+.brand-heading {
+  color: #B60E0E; }
+
+.download-section h2 {
+  color: #E37A23; }
+
+#contact h2 {
+  color: #E37A23; }
+
+#about h2 {
+  color: #E37A23; }
+
 .intro {
   background: url(../images/intro-bg.png) no-repeat bottom center scroll;
   background-color: black;
