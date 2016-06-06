@@ -15,12 +15,13 @@ function getMovieData() {
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
-
+  //todo --------- the accoridian is not working due to name conflicts
   getMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movies = { movies: [] };
     for ( var i = 0; i < 5; i++ ) {
-      movies.movies[i] = { title: '"' + movieData.results[i].title + '"' };
+      movies.movies[i] = { title: movieData.results[i].title,
+                            movieId: "movie" + i};
       console.log(movies.movies[i].title);
     }
     console.log(movies);
