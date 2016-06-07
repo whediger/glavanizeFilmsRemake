@@ -273,7 +273,11 @@ body {
   color: #B60E0E; }
 
 .panel-body {
+  display: inline-block;
   color: black; }
+  .panel-body .moviePoster {
+    float: left;
+    height: 200px; }
 
 .download-section h2 {
   color: #E37A23; }

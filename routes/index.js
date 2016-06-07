@@ -15,16 +15,32 @@ function getMovieData() {
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
-  //todo --------- the accoridian is not working due to name conflicts
+
   getMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movies = { movies: [] };
+
     for ( var i = 0; i < 10; i++ ) {
-      movies.movies[i] = { title: movieData.results[i].title,
-                            movieId: "movie" + i};
-      console.log(movies.movies[i].title);
+      var date = movieData.results[i].release_date
+      var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+      var dateKey = date.split(""); //split date into array of chars to use
+      //console.log(dateKey); //uncomment to see dateKey array
+      //if month number is less than 10
+      if ( dateKey[5] === '0' ) {
+      date = months[dateKey[6]] + " " + dateKey[8] + dateKey[9];
+    } else {
+      //else convert dateKey val from string to int and add 10
+      date = months[(parseInt(dateKey[6]) + 10)] + " " + dateKey[8] + dateKey[9];
     }
-    console.log(movies);
+      movies.movies[i] = { title: movieData.results[i].title,
+                            movieId: "movie" + i,
+                            moviePic: 'http://image.tmdb.org/t/p/w500/'
+                                      + movieData.results[i].poster_path,
+                            releaseDate: date};
+
+      //console.log(movies.movies[i].title);
+    }
+    //console.log(movies);
 
     response.render('index', movies);
 

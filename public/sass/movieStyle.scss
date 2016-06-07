@@ -20,9 +20,18 @@
   color: $headline;
 }
 
-.panel-body {
-  color: black;
-}
+
+
+    .panel-body {
+      display: inline-block;
+      color: black;
+        .moviePoster {
+          float: left;
+          height:200px;
+
+        }
+    }
+
 
 .download-section {
   h2 {
