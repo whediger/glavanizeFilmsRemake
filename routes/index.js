@@ -43,10 +43,10 @@ router.get('/', function(request, response, next) {
                    movies: [] };
     var date = "";
     var vote = 0;
-
+    //todo --votes and popularity ar backwards
     for ( var i = 0; i < movieNum; i++ ) {
       date = getMonth(movieData.results[i].release_date);
-      vote = getPopularity(movieData.results[i].popularity);
+      popular = getPopularity(movieData.results[i].popularity);
 
       movies.movies[i] = {  title: movieData.results[i].title,
                             movieId: "movie" + i,
@@ -55,7 +55,8 @@ router.get('/', function(request, response, next) {
                             releaseDate: date,
                             movieCopy: movieData.results[i].overview,
                             numberOfMovies: movieNum,
-                            votes: vote
+                            popularity: popular,
+                            votes: movieData.results[i].vote_count
                             };
 
     }

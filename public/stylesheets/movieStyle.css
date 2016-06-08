@@ -285,9 +285,9 @@ body {
     font-size: 1em;
     line-height: 1.2;
     text-align: justify; }
-  .panel-body .voteRating {
+  .panel-body h4 {
     text-align: left;
-    color: #999900; }
+    color: #cccc00; }
 
 .download-section h2 {
   color: #E37A23; }
