@@ -95,7 +95,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Top 10 Movies coming to theatres</h2>
                 <!-- accordion -->
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel-group" id="accordion" data-numofmovies="{{numberOfMovies}}" role="tablist" aria-multiselectable="true">
                   {{#each movies}}
                       <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="heading{{movieId}}">
@@ -110,7 +110,13 @@
                             <!-- content for each movie -->
                             <img class="moviePoster" src="{{moviePic}}" alt="movie poster for {{title}}" />
                             <div class="movieInfo">
-
+                              <p>{{movieCopy}}</p>
+                              <h4 class="voteRating" data-rating="{{votes}}">Popularity({{votes}})
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></h4>
                             </div>
                           </div>
                         </div>
@@ -140,7 +146,8 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Wes Hediger</h2>
+                <h2>Contact</h2>
+                <h2>Wes Hediger</h2>
                 <p>Feel free to send an email to tell me what you think or to say hello!</p>
                 <p><a href="mailto:wes.hediger@gmail.com">wes.hediger@gmail.com</a>
                 </p>
@@ -183,6 +190,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="javascripts/grayscale.js"></script>
+
+    <!-- movie script -->
+    <script src="javascripts/movie.js"></script>
 
 </body>
 

@@ -274,10 +274,20 @@ body {
 
 .panel-body {
   display: inline-block;
-  color: black; }
+  background-color: black;
+  border-color: #E32323;
+  color: white; }
   .panel-body .moviePoster {
     float: left;
-    height: 200px; }
+    height: 200px;
+    margin-right: 10px; }
+  .panel-body p {
+    font-size: 1em;
+    line-height: 1.2;
+    text-align: justify; }
+  .panel-body .voteRating {
+    text-align: left;
+    color: #999900; }
 
 .download-section h2 {
   color: #E37A23; }

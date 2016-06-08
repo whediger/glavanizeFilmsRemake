@@ -24,11 +24,23 @@
 
     .panel-body {
       display: inline-block;
-      color: black;
+      background-color: black;
+      border-color: $primary;
+      color: white;
         .moviePoster {
           float: left;
           height:200px;
+          margin-right: 10px;
+        }
+        p {
+          font-size: 1em;
+          line-height: 1.2;
+          text-align: justify;
 
+        }
+        .voteRating {
+          text-align: left;
+          color: darken(yellow, 20);
         }
     }
 
