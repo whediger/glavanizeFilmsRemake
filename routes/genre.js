@@ -7,7 +7,7 @@ module.exports = {
           for ( var i = 0; i < arrIdIn.length; i++ ){
             for ( var e = 0; e < genreLength; e++ ) {
                 if ( genre.genres[e].id === arrIdIn[i] ){
-                  arrayOut.push(genre.genres[e].name);
+                  arrayOut.push(" " + genre.genres[e].name);
                 }
             }
 
