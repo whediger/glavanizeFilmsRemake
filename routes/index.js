@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request');
+var genre = require('./genre');
 var router = express.Router();
 
 function getMovieData() {
@@ -33,6 +34,8 @@ function getPopularity(voteIn) {
   return Math.round(voteIn);
 }
 
+
+
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
@@ -40,13 +43,16 @@ router.get('/', function(request, response, next) {
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
     var movies = { numberOfMovies: movieNum,
-                   movies: [] };
+                           movies: [] };
     var date = "";
     var vote = 0;
     //todo --votes and popularity ar backwards
     for ( var i = 0; i < movieNum; i++ ) {
       date = getMonth(movieData.results[i].release_date);
       popular = getPopularity(movieData.results[i].popularity);
+      genreNames = movieData.results[i].genre_ids;
+      console.log("genres: " + genre.getGenre(genreNames));
+      //genre.getGenre(genreNames);
 
       movies.movies[i] = {  title: movieData.results[i].title,
                             movieId: "movie" + i,
@@ -56,11 +62,11 @@ router.get('/', function(request, response, next) {
                             movieCopy: movieData.results[i].overview,
                             numberOfMovies: movieNum,
                             popularity: popular,
-                            votes: movieData.results[i].vote_count
+                            votes: movieData.results[i].vote_count,
+                            genre: genre.getGenre(genreNames)
                             };
 
     }
-    console.log(movies);
     //console.log(movies);
 
     response.render('index', movies);

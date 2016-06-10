@@ -288,6 +288,8 @@ body {
   .panel-body h4 {
     text-align: left;
     color: #cccc00; }
+  .panel-body .glyphicon-star-empty {
+    font-weight: lighter; }
 
 .download-section h2 {
   color: #E37A23; }
