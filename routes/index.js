@@ -76,5 +76,5 @@ router.get('/', function(request, response, next) {
 
 });
 
-console.log("hello out thereeeeee!!!!!!!        +=={========>")
+
 module.exports = router;
