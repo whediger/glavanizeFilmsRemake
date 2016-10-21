@@ -301,7 +301,7 @@ body {
   color: #E37A23; }
 
 .intro {
-  background: url(../images/intro-bg.png) no-repeat bottom center scroll;
+  background: url('/images/intro-bg.png') no-repeat bottom center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
