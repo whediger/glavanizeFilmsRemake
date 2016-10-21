@@ -16,8 +16,5 @@ h1 {
   letter-spacing: .135em;
 }
 p small {
-  color: #E37A23;
-}
-a {
-  color: #00B7FF;
+  font-weight: 100;
 }

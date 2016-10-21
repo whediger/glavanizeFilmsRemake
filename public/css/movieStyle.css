@@ -289,16 +289,17 @@ body {
     text-align: left;
     color: #cccc00; }
   .panel-body .glyphicon-star-empty {
-    font-weight: lighter; }
+    font-weight: 100;
+    color: blue; }
 
 .download-section h2 {
-  color: #E37A23; }
+  color: #cccc00; }
 
 #contact h2 {
-  color: #E37A23; }
+  color: #cccc00; }
 
 #about h2 {
-  color: #E37A23; }
+  color: #cccc00; }
 
 .intro {
   background: url('/images/intro-bg.png') no-repeat bottom center scroll;
