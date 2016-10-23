@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 
-function getMovieData() {
+function getUpcomingMovieData() {
   return new Promise(function(fulfill, reject){
     request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=b2c319d64cba3280f7ee6977b9a470e0',
       function(error, response, data){
@@ -41,7 +41,7 @@ function getPopularity(voteIn) {
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
-  getMovieData().then(function(data){
+  getUpcomingMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
     var movies = { numberOfMovies: movieNum,

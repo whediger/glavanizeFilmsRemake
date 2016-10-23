@@ -1,5 +1,5 @@
 # glavanizeFilmsRemake
-This is a remake of a site I was working on.
+I am refactoring a site I was working on a while ago.
 
 ## this site uses
   * Express
@@ -19,10 +19,14 @@ This is a remake of a site I was working on.
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
   * add movie trailers with HTML5
-  * find ways to speed up load time
   * add way to recommend/invite movie to friend
   * Add auth for db use
-    * save movie bucket list
+    * save movie bucket list by different list types
+    * share lists with other people or make public
     * personal rating system
     * favorites with notes why it is so
     * let user create own categories for movies. i.e. Documentary, adventure, computer related, physics, thriller, etc...
+
+## link to live site
+
+> [link to live site](https://movie-guide.herokuapp.com/)
