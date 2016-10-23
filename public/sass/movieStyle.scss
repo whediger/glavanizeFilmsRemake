@@ -45,7 +45,12 @@
         .glyphicon-star-empty {
           font-weight: lighter;
         }
-        
+        @media (max-width: 767px) {
+          .rating {
+            clear: both;
+          }
+        }
+
     }
 
 

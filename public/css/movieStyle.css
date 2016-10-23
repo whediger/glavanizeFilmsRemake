@@ -291,6 +291,11 @@ body {
   .panel-body .glyphicon-star-empty {
     font-weight: 100;
     color: blue; }
+  @media (max-width: 767px) {
+    .panel-body .rating {
+      clear: both;
+    }
+  }
 
 .download-section h2 {
   color: #cccc00; }
