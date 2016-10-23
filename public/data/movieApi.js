@@ -9,7 +9,7 @@ module.exports = {
     return new Promise(function(fulfill, reject){
       request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
         function(error, response, data){
-          //console.log('data ', data);
+          // console.log('data ', data);
           // console.log('response ', response);
           if (error) reject(error);
           else fulfill(data);
@@ -69,6 +69,15 @@ module.exports = {
   },
 
   getMoviesShowing: function(){
-    console.log('hello, need to add movies now showing');
+    console.log('hello, need to add movies now showing  +==}========>');
+    return new Promise(function(fulfill, reject){
+      request('https://api.themoviedb.org/3/movie/now_playing?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
+        function(error, response, data){
+          // console.log('data ', data);
+          // console.log('response ', response);
+          if (error) reject(error);
+          else fulfill(data);
+        });
+    });
   }
 }

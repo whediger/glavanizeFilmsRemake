@@ -24,7 +24,7 @@
                 <h2>10 Most Popular Movies Showing Soon</h2>
                 <!-- accordion -->
                 <div class="panel-group" id="accordion" data-numofmovies="{{numberOfMovies}}" role="tablist" aria-multiselectable="true">
-                  {{#each movies}}
+                  {{#each upComingMovies.movies}}
                       <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="heading{{movieId}}">
                           <h4 class="panel-title">
@@ -61,22 +61,22 @@
     </section>
 
     <!-- In theatres Now -->
-    <section id="comingSoon" class="container content-section text-center">
+    <section id="nowShowing" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>10 Most Popular Movies In Theatres</h2>
                 <!-- accordion -->
                 <div class="panel-group" id="accordion" data-numofmovies="{{numberOfMovies}}" role="tablist" aria-multiselectable="true">
-                  {{#each moviesInTheaters}}
+                  {{#each moviesNowShowing.movies}}
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading{{movieId}}">
+                        <div class="panel-heading" role="tab" id="headingNS{{movieId}}">
                           <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{movieId}}" aria-expanded="false" aria-controls="collapse{{movieId}}">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNS{{movieId}}" aria-expanded="false" aria-controls="collapseNS{{movieId}}">
                               {{title}} - {{releaseDate}}
                             </a>
                           </h4>
                         </div>
-                        <div id="collapse{{movieId}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{movieId}}">
+                        <div id="collapseNS{{movieId}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNS{{movieId}}">
                           <div class="panel-body">
                             <!-- content for each movie -->
                             <img class="moviePoster" src="{{moviePic}}" alt="movie poster for {{title}}" />
