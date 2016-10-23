@@ -1,21 +1,11 @@
 var express = require('express');
-var request = require('request');
 var genre = require('./genre');
 var router = express.Router();
+var movieApi = require('../public/data/movieApi');
 
 
 
-function getUpcomingMovieData() {
-  return new Promise(function(fulfill, reject){
-    request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=b2c319d64cba3280f7ee6977b9a470e0',
-      function(error, response, data){
-        // console.log('data ', data);
-        // console.log('response ', response);
-        if (error) reject(error);
-        else fulfill(data);
-      });
-  });
-}
+
 
 function getMonth(dateIn) {
   //var date = movieData.results[i].release_date
@@ -37,11 +27,10 @@ function getPopularity(voteIn) {
 }
 
 
-
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
-  getUpcomingMovieData().then(function(data){
+  movieApi.getUpcomingMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
     var upComingMovies = { numberOfMovies: movieNum,
@@ -69,7 +58,6 @@ router.get('/', function(request, response, next) {
                             votes: movieData.results[i].vote_count,
                             genre: genre.getGenre(genreNames)
                             };
-
     }
     //console.log(movies);
 
