@@ -1,6 +1,6 @@
 {
   "name": "galvanizeFilmsRemake",
-  "version": "0.0.0",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "build-css": "node-sass --include-path scss public/sass/moviestyle.scss public/stylesheets/moviestyle.css",
