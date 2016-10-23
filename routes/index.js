@@ -4,12 +4,6 @@ var router = express.Router();
 var movieApi = require('../public/data/movieApi');
 
 
-
-function getPopularity(voteIn) {
-  return Math.round(voteIn);
-}
-
-
 /* GET home page. */
 router.get('/', function(request, response, next) {
   //response.render('index', { title: 'Movie Guide' });
@@ -25,7 +19,7 @@ router.get('/', function(request, response, next) {
       var isoDate = new Date(movieData.results[i].release_date);
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       date = movieApi.getMonth(movieData.results[i].release_date);
-      popular = getPopularity(movieData.results[i].popularity);
+      popular = movieApi.getPopularity(movieData.results[i].popularity);
       genreNames = movieData.results[i].genre_ids;
       //genre.getGenre(genreNames);
 
