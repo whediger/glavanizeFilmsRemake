@@ -100,13 +100,3 @@ module.exports = {
                   }
                 ]
               }
-
-              // for ( var e = 0; e < arrIdIn.length; e++){//loops through arrIn
-              //
-              //   for ( var i = 0; i < genreLength; i++ ){//loos through genre object
-              //     if ( genre.genres[i].id === arrIdIn[e] ){
-              //       idArrIn[e] = genre.genres[i].name;
-              //     }
-              //   }
-              // }
-              // return arrIdIn;

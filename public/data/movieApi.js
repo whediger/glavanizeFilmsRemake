@@ -1,14 +1,15 @@
 
 var request = require('request');
 var genre = require('./genre');
+require('dotenv').config();
 
 
 module.exports = {
   getUpcomingMovieData: function() {
     return new Promise(function(fulfill, reject){
-      request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=b2c319d64cba3280f7ee6977b9a470e0',
+      request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
         function(error, response, data){
-          console.log('data ', data);
+          //console.log('data ', data);
           // console.log('response ', response);
           if (error) reject(error);
           else fulfill(data);
@@ -65,9 +66,9 @@ module.exports = {
                             };
     }
     return upComingMovies;
+  },
+
+  getMoviesShowing: function(){
+    console.log('hello, need to add movies now showing');
   }
 }
-
-// function getPopularity(voteIn) {
-//   return Math.round(voteIn);
-// }
