@@ -44,7 +44,7 @@ router.get('/', function(request, response, next) {
   getUpcomingMovieData().then(function(data){
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
-    var movies = { numberOfMovies: movieNum,
+    var upComingMovies = { numberOfMovies: movieNum,
                            movies: [] };
     var date = "";
     var vote = 0;
@@ -57,7 +57,7 @@ router.get('/', function(request, response, next) {
       genreNames = movieData.results[i].genre_ids;
       //genre.getGenre(genreNames);
 
-      movies.movies[i] = {  title: movieData.results[i].title,
+      upComingMovies.movies[i] = {  title: movieData.results[i].title,
                             movieId: "movie" + i,
                             moviePic: 'http://image.tmdb.org/t/p/w500/'
                                       + movieData.results[i].poster_path,
@@ -73,7 +73,7 @@ router.get('/', function(request, response, next) {
     }
     //console.log(movies);
 
-    response.render('index', movies);
+    response.render('index', upComingMovies);
 
   });
 });
