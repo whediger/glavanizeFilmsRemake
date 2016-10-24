@@ -18,8 +18,9 @@ I am refactoring a site I was working on a while ago.
 ## TODO
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
-    * fix google maps
+    * fix google maps1
   * add movie trailers with HTML5
+  * **the release dates might be wrong!**
   * add way to recommend/invite movie to friend
   * replace current rating system with a better one - ? - rotten tomatoes
   * Add auth for db use

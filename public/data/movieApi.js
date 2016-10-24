@@ -43,7 +43,7 @@ module.exports = {
                            movies: [] };
     var date = "";
     var vote = 0;
-    //todo --votes and popularity ar backwards
+    //todo --votes and popularity are backwards
     for ( var i = 0; i < movieNum; i++ ) {
       var isoDate = new Date(movieData.results[i].release_date);
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");

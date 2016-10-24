@@ -17,7 +17,8 @@ router.get('/', function(request, response, next) {
         movies.moviesNowShowing = movieApi.filterUpComingMovieData(nowData);
         // console.log(moviesNowShowing);
         response.render('index', movies);
-        //TODO movies now whowing has broken rating system
+        //TODO rating system is garbage
+        //arrange movies in ascending order by number of votes
       });
     });
 
