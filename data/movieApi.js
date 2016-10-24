@@ -18,7 +18,6 @@ module.exports = {
   },
 
   getMonth: function(dateIn) {
-    console.log(dateIn);
     //var date = movieData.results[i].release_date
     var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
     var dateKey = dateIn.split(""); //split date into array of chars to use
@@ -37,7 +36,7 @@ module.exports = {
       return Math.round(voteIn);
   },
 
-  filterUpComingMovieData: function(data){
+  filterMovieData: function(data){
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
     var upComingMovies = { numberOfMovies: movieNum,
@@ -58,7 +57,7 @@ module.exports = {
       //genre.getGenre(genreNames);
 
       upComingMovies.movies[i] = {  title: movieData.results[i].title,
-                                  movieId: "movie" + i,
+                                  movieId: movieData.results[i].id,
                                  moviePic: 'http://image.tmdb.org/t/p/w500/'
                                             + movieData.results[i].poster_path,
                               releaseDate: date,

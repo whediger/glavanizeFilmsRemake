@@ -10,7 +10,6 @@ $(document).ready(function(){
   }
 
   var numberOfMoviesInTheaters = $('.group2').data('numofmovies');
-
   for ( i = 0; i <= numberOfMoviesInTheaters; i++ ){
     var popularity = $('.voteRating2' + i).data('popularity');
     for ( e = 1; e <= popularity; e++ ){

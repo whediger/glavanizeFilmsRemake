@@ -24,7 +24,6 @@ I am refactoring a site I was working on a while ago.
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
   * add movie trailers with HTML5
-  * **figure out what is wrong with release dates**
   * add way to recommend/invite movie to friend
   * replace current rating system with a better one - ? - rotten tomatoes
   * Add auth for db use

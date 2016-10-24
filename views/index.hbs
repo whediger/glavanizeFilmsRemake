@@ -26,7 +26,7 @@
                 <div class="panel-group group1" id="accordion1" data-numofmovies="{{upComingMovies.numberOfMovies}}" role="tablist" aria-multiselectable="true">
                   {{#each upComingMovies.movies}}
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading{{movieId}}">
+                        <div class="panel-heading" role="tab" id="heading{{movieId}}" data-movieId="{{movieId}}">
                           <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{movieId}}" aria-expanded="false" aria-controls="collapse{{movieId}}">
                               {{title}} - {{releaseDate}}
@@ -46,9 +46,14 @@
                                     <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
                                     <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></h4><br>
                               <h4 class="genre">{{genre}}</h4>
-                              <a href="http://www.google.com/calendar/event?action=TEMPLATE&text=Movie+Release+Date:+{{title}}&dates={{isoDate}}/{{isoDate}}&details={{movieCopy}}" target="_blank" rel="nofollow">
-                              <span class="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                              </a>
+
+
+                                <a href="http://www.google.com/calendar/event?action=TEMPLATE&text=Movie+Release+Date:+{{title}}+{{releaseDate}}&dates={{isoDate}}/{{isoDate}}&details={{movieCopy}}" target="_blank" rel="nofollow">
+                                  <i class="fa fa-calendar calendarTrailerButtons" aria-hidden="true"></i>
+                                </a>
+                                <i class="fa fa-film calendarTrailerButtons" aria-hidden="true"></i>
+                              
+
                             </div>
                           </div>
                         </div>
@@ -69,7 +74,7 @@
                 <div class="panel-group group2" id="accordion2" data-numofmovies="{{moviesNowShowing.numberOfMovies}}" role="tablist" aria-multiselectable="true">
                   {{#each moviesNowShowing.movies}}
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingNS{{movieId}}">
+                        <div class="panel-heading" role="tab" id="headingNS{{movieId}}" data-movieId="{{movieId}}">
                           <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseNS{{movieId}}" aria-expanded="false" aria-controls="collapseNS{{movieId}}">
                               {{title}} - {{releaseDate}}
