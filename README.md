@@ -23,7 +23,6 @@ I am refactoring a site I was working on a while ago.
 ## TODO
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
-    * fix google maps
   * add movie trailers with HTML5
   * **figure out what is wrong with release dates**
   * add way to recommend/invite movie to friend
