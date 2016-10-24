@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var movieApi = require('../public/data/movieApi');
+var movieApi = require('../data/movieApi');
 
 
 /* GET home page. */
