@@ -1,6 +1,11 @@
 # glavanizeFilmsRemake
 I am refactoring a site I was working on a while ago.
 
+## link to live site
+
+> [link to live site](https://movie-guide.herokuapp.com/)
+
+
 ## this site uses
   * Express
   * css/sass
@@ -18,9 +23,9 @@ I am refactoring a site I was working on a while ago.
 ## TODO
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
-    * fix google maps1
+    * fix google maps
   * add movie trailers with HTML5
-  * **the release dates might be wrong!**
+  * **figure out what is wrong with release dates**
   * add way to recommend/invite movie to friend
   * replace current rating system with a better one - ? - rotten tomatoes
   * Add auth for db use
@@ -29,7 +34,3 @@ I am refactoring a site I was working on a while ago.
     * personal rating system
     * favorites with notes why it is so
     * let user create own categories for movies. i.e. Documentary, adventure, computer related, physics, thriller, etc...
-
-## link to live site
-
-> [link to live site](https://movie-guide.herokuapp.com/)
