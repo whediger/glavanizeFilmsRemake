@@ -32,7 +32,7 @@ module.exports = {
     return date;
   },
 
-  getPopularity: function(voteIn) {
+  roundResult: function(voteIn) {
       return Math.round(voteIn);
   },
 
@@ -48,7 +48,11 @@ module.exports = {
       var isoDate = new Date(movieData.results[i].release_date);
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       date = this.getMonth(movieData.results[i].release_date);
-      popular = this.getPopularity(movieData.results[i].popularity);
+      popular = this.roundResult(movieData.results[i].popularity);
+      if (popular > 6 ){
+        popular = this.roundResult(movieData.results[i].vote_average);
+      }
+
       genreNames = movieData.results[i].genre_ids;
       //genre.getGenre(genreNames);
 
@@ -69,7 +73,6 @@ module.exports = {
   },
 
   getMoviesShowing: function(){
-    console.log('hello, need to add movies now showing  +==}========>');
     return new Promise(function(fulfill, reject){
       request('https://api.themoviedb.org/3/movie/now_playing?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
         function(error, response, data){
