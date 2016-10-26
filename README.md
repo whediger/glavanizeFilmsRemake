@@ -1,5 +1,5 @@
 # glavanizeFilmsRemake
-I am refactoring a site I was working on a while ago.
+I am refactoring a site I was working on a while ago for personal use.
 
 ## link to live site
 
