@@ -4,7 +4,7 @@ var movieApi = require('../data/movieApi');
 
 
 /* GET home page. */
-router.get('/', function(request, response, next) {
+router.get('/', function(req, res, next) {
   var movies = {};
   movieApi.getUpcomingMovieData()
     .then(function(soonData){
@@ -16,15 +16,20 @@ router.get('/', function(request, response, next) {
       .then(function(nowData){
         movies.moviesNowShowing = movieApi.filterMovieData(nowData);
         // console.log(moviesNowShowing);
-        response.render('index', movies);
+        res.render('index', movies);
         //TODO rating system is garbage
         //arrange movies in ascending order by number of votes?
       });
     });
-
-
-
 });
+
+router.get('/:title.:id', function(req, res, next){
+  //movieApi.getMovieTrailer()
+  var data = { id: req.params.id, title: req.params.title };
+  console.log(" +==}========>  got stuff: " + req.params.id);
+  res.render('trailer', data);
+});
+
 
 
 module.exports = router;

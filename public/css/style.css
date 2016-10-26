@@ -31,3 +31,17 @@ p small {
 .calendarTrailerButtons:hover{
   cursor: pointer;
 }
+
+#trailerVideo {
+  margin-top: 5%;
+  width:100%;
+  height:75vh;
+
+}
+@media (min-width: 768px) {
+  #trailerVideo {
+    margin-left: 12%;
+    width: 75%;
+    height: 75vh;
+  }
+}
