@@ -1,4 +1,3 @@
-
 var request = require('request');
 var genre = require('./genre');
 require('dotenv').config();
@@ -78,8 +77,20 @@ module.exports = {
         function(error, response, data){
           // console.log('data ', data);
           // console.log('response ', response);
-          if (error) reject(error);
+          if (error) reject(error)
           else fulfill(data);
+        });
+    });
+  },
+
+  getMovieTrailer: function(movieId) {
+    return new Promise(function(fulfill, reject){
+      request('https://api.themoviedb.org/3/movie/'+ movieId +'/videos?api_key=' + process.env.THEMOVIEDB_KEY,
+        function(error, response, data){
+          data = JSON.parse(data);
+          var youtubeKey = data.results[1].key;
+          if (error) reject(error)
+          else fulfill(youtubeKey)
         });
     });
   }

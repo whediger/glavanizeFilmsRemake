@@ -24,10 +24,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:title.:id', function(req, res, next){
-  //movieApi.getMovieTrailer()
-  var data = { title: req.params.id, id: req.params.title };
-  console.log(" +==}========>  got stuff: " + req.params.id);
-  res.render('trailer', data);
+  movieApi.getMovieTrailer(req.params.id)
+    .then(function(youtubeKey){
+        var data = { title: req.params.title, youtubeKey: youtubeKey };
+        res.render('trailer', data);
+    });
 });
 
 
