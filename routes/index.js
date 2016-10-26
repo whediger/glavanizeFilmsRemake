@@ -6,6 +6,9 @@ var movieApi = require('../data/movieApi');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var movies = {};
+  //not in promise for testing purposes only
+  movieApi.getTheaterLocations();
+
   movieApi.getUpcomingMovieData()
     .then(function(soonData){
       movies.upComingMovies = movieApi.filterMovieData(soonData);

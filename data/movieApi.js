@@ -46,9 +46,7 @@ module.exports = {
       var isoDate = new Date(movieData.results[i].release_date);
       var todaysDate = new Date();
       tddaysDate = Date.now();
-      console.log(todaysDate);
       todaysDate = todaysDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
-      console.log(todaysDate);
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       date = this.getMonth(movieData.results[i].release_date);
       popular = this.roundResult(movieData.results[i].popularity);
@@ -102,6 +100,17 @@ module.exports = {
           }
           if (error) reject(error)
           else fulfill(youtubeKey)
+        });
+    });
+  },
+
+  getTheaterLocations: function() {
+    return new Promise(function(fulfill, reject){
+      request('https://maps.googleapis.com/maps/api/geocode/json?address=80209&components=postal_code&key=AIzaSyAroEaSDeI9YCYmgcbMWqLIybCv8XfY6pA',
+        function(error, response, geoLocation){
+          geoLocation = JSON.parse(geoLocation);
+          console.log(geoLocation.results[0].geometry.location.lat);
+          console.log(geoLocation.results[0].geometry.location.lng);
         });
     });
   }
