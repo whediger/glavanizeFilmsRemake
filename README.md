@@ -23,9 +23,8 @@ I am refactoring a site I was working on a while ago.
 ## TODO
   * display movie data from local theaters
     * add cookies to save last location searched to local storage
-  * add movie trailers with HTML5
   * add way to recommend/invite movie to friend
-  * replace current rating system with a better one - ? - rotten tomatoes
+  * replace current movie bd and rating system with a better one - ? - rotten tomatoes
   * Add auth for db use
     * save movie bucket list by different list types
     * share lists with other people or make public

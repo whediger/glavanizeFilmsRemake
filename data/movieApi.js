@@ -88,7 +88,13 @@ module.exports = {
       request('https://api.themoviedb.org/3/movie/'+ movieId +'/videos?api_key=' + process.env.THEMOVIEDB_KEY,
         function(error, response, data){
           data = JSON.parse(data);
-          var youtubeKey = data.results[1].key;
+          try {
+            var youtubeKey = data.results[0].key;
+          }
+          catch(e) {
+            console.error("+==}========> no video found: " + e);
+            var youtubeKey = null;
+          }
           if (error) reject(error)
           else fulfill(youtubeKey)
         });
