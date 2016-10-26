@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:title.:id', function(req, res, next){
   //movieApi.getMovieTrailer()
-  var data = { id: req.params.id, title: req.params.title };
+  var data = { title: req.params.id, id: req.params.title };
   console.log(" +==}========>  got stuff: " + req.params.id);
   res.render('trailer', data);
 });
