@@ -38,13 +38,17 @@ module.exports = {
   filterMovieData: function(data){
     var movieData = JSON.parse(data);
     var movieNum = 10; //this is the number of movies displayed
-    var upComingMovies = { numberOfMovies: movieNum,
+    var movies = { numberOfMovies: movieNum,
                            movies: [] };
     var date = "";
     var vote = 0;
-    //todo --votes and popularity are backwards
     for ( var i = 0; i < movieNum; i++ ) {
       var isoDate = new Date(movieData.results[i].release_date);
+      var todaysDate = new Date();
+      tddaysDate = Date.now();
+      console.log(todaysDate);
+      todaysDate = todaysDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
+      console.log(todaysDate);
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       date = this.getMonth(movieData.results[i].release_date);
       popular = this.roundResult(movieData.results[i].popularity);
@@ -55,12 +59,13 @@ module.exports = {
       genreNames = movieData.results[i].genre_ids;
       //genre.getGenre(genreNames);
 
-      upComingMovies.movies[i] = {  title: movieData.results[i].title,
+      movies.movies[i] = {  title: movieData.results[i].title,
                                   movieId: movieData.results[i].id,
                                  moviePic: 'http://image.tmdb.org/t/p/w500/'
                                             + movieData.results[i].poster_path,
                               releaseDate: date,
                                   isoDate: isoDate,
+                               todaysDate: todaysDate,
                                 movieCopy: movieData.results[i].overview,
                            numberOfMovies: movieNum,
                                popularity: popular,
@@ -68,7 +73,7 @@ module.exports = {
                                     genre: genre.getGenre(genreNames)
                             };
     }
-    return upComingMovies;
+    return movies;
   },
 
   getMoviesShowing: function(){

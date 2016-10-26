@@ -26,11 +26,9 @@ router.get('/', function(req, res, next) {
 router.get('/:title.:id', function(req, res, next){
   movieApi.getMovieTrailer(req.params.id)
     .then(function(youtubeKey){
-      var data = {};
+      var data = { title: req.params.title, youtubeKey: youtubeKey };
       if (youtubeKey === null){
           data.title = "Sorry: No Video for This Movie found"
-      } else {
-        data = { title: req.params.title, youtubeKey: youtubeKey }
       }
 
       res.render('trailer', data);
