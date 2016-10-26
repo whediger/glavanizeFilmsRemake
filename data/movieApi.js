@@ -61,7 +61,7 @@ module.exports = {
 
       movies.movies[i] = {  title: movieData.results[i].title,
                                   movieId: movieData.results[i].id,
-                                 moviePic: 'http://image.tmdb.org/t/p/w500/'
+                                 moviePic: 'https://image.tmdb.org/t/p/w500/'
                                             + movieData.results[i].poster_path,
                               releaseDate: date,
                                   isoDate: isoDate,
