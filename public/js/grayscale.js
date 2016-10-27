@@ -40,14 +40,20 @@ function getUserLocation(zipCode, callback) {
   return new Promise(function(fulfill, reject){
     $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+ zipCode + '&components=postal_code&key=AIzaSyAroEaSDeI9YCYmgcbMWqLIybCv8XfY6pA',
       function(geoLocation){
-        var location = {};
-        //geoLocation = JSON.parse(geoLocation);
-        // console.log(geoLocation.results[0].geometry.location.lat);
-        // console.log(geoLocation.results[0].geometry.location.lng);
-        location = {  lat: geoLocation.results[0].geometry.location.lat,
-                      lng: geoLocation.results[0].geometry.location.lng,
-                  zipCode: zipCode }
-        callback(location);
+        if (geoLocation.status == 'ZERO_RESULTS'){
+          document.getElementById('zipCodeInput').style.border = 'thick dotted yellow';
+          document.getElementById('locationError').style.visibility = 'visible';
+          console.error('error: location not found');
+        } else {
+          var location = {};
+          //geoLocation = JSON.parse(geoLocation);
+          // console.log(geoLocation.results[0].geometry.location.lat);
+          // console.log(geoLocation.results[0].geometry.location.lng);
+          location = {  lat: geoLocation.results[0].geometry.location.lat,
+                        lng: geoLocation.results[0].geometry.location.lng,
+                    zipCode: zipCode }
+          callback(location);
+        }
       });
   });
 }
@@ -55,7 +61,7 @@ function getUserLocation(zipCode, callback) {
 // Google Maps Scripts
 var map = null;
 // When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', initMap(80209) );
+google.maps.event.addDomListener(window, 'load', initMap('80209') );
 
 
 function initMap(zipCode){

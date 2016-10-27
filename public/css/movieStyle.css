@@ -299,6 +299,9 @@ body {
 
 .download-section h2 {
   color: #cccc00; }
+#locationError {
+  visibility: hidden;
+}
 
 #contact h2 {
   color: #cccc00; }
