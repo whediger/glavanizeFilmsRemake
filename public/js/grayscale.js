@@ -58,10 +58,19 @@ function getUserLocation(zipCode, callback) {
   });
 }
 
+//Google maps event handlers
+document.getElementById('zipButton').addEventListener('click', function(){
+  console.log("button clicked");
+  var zipCode = document.getElementById('zipCodeInput').value;
+  console.log(zipCode);
+  initMap(zipCode);
+});
+
 // Google Maps Scripts
 var map = null;
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', initMap('80209') );
+
 
 
 function initMap(zipCode){
@@ -70,7 +79,7 @@ function initMap(zipCode){
   document.getElementById('zipCodeInput').placeholder = zipCode;
   google.maps.event.addDomListener(window, 'resize', function() {
       getUserLocation(zipCode, function(location){
-          map.setCenter(new google.maps.LatLng(location.lat, location.lng)); //Denver 39.7376, -104.9897
+          map.panTo(new google.maps.LatLng(location.lat, location.lng)); //Denver 39.7376, -104.9897
       });
   });
 }

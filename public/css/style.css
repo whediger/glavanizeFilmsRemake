@@ -50,3 +50,7 @@ p small {
     height: 75vh;
   }
 }
+
+#zipCodeInput {
+  color: black;
+}
