@@ -102,16 +102,6 @@ module.exports = {
           else fulfill(youtubeKey)
         });
     });
-  },
-
-  getTheaterLocations: function() {
-    return new Promise(function(fulfill, reject){
-      request('https://maps.googleapis.com/maps/api/geocode/json?address=80209&components=postal_code&key=AIzaSyAroEaSDeI9YCYmgcbMWqLIybCv8XfY6pA',
-        function(error, response, geoLocation){
-          geoLocation = JSON.parse(geoLocation);
-          console.log(geoLocation.results[0].geometry.location.lat);
-          console.log(geoLocation.results[0].geometry.location.lng);
-        });
-    });
   }
-}
+
+} //module

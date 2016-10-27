@@ -6,19 +6,15 @@ var movieApi = require('../data/movieApi');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var movies = {};
-  //not in promise for testing purposes only
-  movieApi.getTheaterLocations();
 
-  movieApi.getUpcomingMovieData()
-    .then(function(soonData){
-      movies.upComingMovies = movieApi.filterMovieData(soonData);
-      //response.render('index', upComingMovies);
+    movieApi.getUpcomingMovieData()
+    .then(function(data){
+      movies.upComingMovies = movieApi.filterMovieData(data);
     })
     .then(function(){
       movieApi.getMoviesShowing()
       .then(function(nowData){
         movies.moviesNowShowing = movieApi.filterMovieData(nowData);
-        // console.log(moviesNowShowing);
         res.render('index', movies);
         //TODO rating system is garbage
         //arrange movies in ascending order by number of votes?

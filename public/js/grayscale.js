@@ -34,13 +34,49 @@ $('.navbar-collapse ul li a').click(function() {
   }
 });
 
-//google maps geocoder sandbox
+//AJAX functions
+function getAsyncAPI(url, callback){
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+      callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+  }
+}
 
+//google maps geocoder
+function getUserLocation(zipCode) {
+  console.log('in get user location');
+  return new Promise(function(fulfill, reject){
+    getAsyncAPI('https://maps.googleapis.com/maps/api/geocode/json?address='+ zipCode + '&components=postal_code&key=AIzaSyAroEaSDeI9YCYmgcbMWqLIybCv8XfY6pA',
+      function(error, response, geoLocation){
+        var location = {};
+        geoLocation = JSON.parse(geoLocation);
+        // console.log(geoLocation.results[0].geometry.location.lat);
+        // console.log(geoLocation.results[0].geometry.location.lng);
+        location = {  lat: geoLocation.results[0].geometry.location.lat,
+                      lng: geoLocation.results[0].geometry.location.lng,
+                  zipCode: zipCode }
+        if (error) reject(error)
+        else fulfill(location)
+      });
+  });
+}
 
 // Google Maps Scripts
 var map = null;
 // When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
+google.maps.event.addDomListener(window, 'load', function(){
+    getUserLocation(80209)
+     .then(function(location){
+       init();
+     });
+});
+
+
+
 google.maps.event.addDomListener(window, 'resize', function() {
     map.setCenter(new google.maps.LatLng(39.7376, -104.9897)); //Denver
 });
