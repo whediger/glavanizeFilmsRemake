@@ -63,14 +63,18 @@ function getUserLocation(zipCode, callback) {
 //Google maps event handlers
 document.getElementById('zipButton').addEventListener('click', function(){
   var zipCode = document.getElementById('zipCodeInput').value;
+  saveToLocalStorage('zipcode', zipCode)
   initMap(zipCode);
 
 });
 
 // Google Maps Scripts
 var map = null;
+var zipcode = localStorageInit();
+document.getElementById('zipCodeInput').value = zipcode;
+console.log('zipcode ' + zipcode);
 // When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', initMap('80209') );
+google.maps.event.addDomListener(window, 'load', initMap(zipcode) );
 
 
 function getLocalTheatres(zipcode){
@@ -292,4 +296,41 @@ function init(location) {
           map: map,
           icon: image
       });
+}
+
+// localstorage Scripts
+
+function storageAvailable(type) {
+	try {
+		var storage = window[type],
+			x = '__storage_test__';
+		storage.setItem(x, x);
+		storage.removeItem(x);
+		return true;
+	}
+	catch(e) {
+		return false;
+	}
+}
+
+function localStorageInit(){
+  if(!localStorage.getItem('zipcode')) {
+    return '80209';
+  } else {
+    console.log('saved zipcode');
+    console.log(localStorage.getItem('zipcode'));
+    return localStorage.getItem('zipcode');
+  }
+}
+
+function saveToLocalStorage(key, value){
+  if (storageAvailable('localStorage')) {
+    console.log("localstorage is available!");
+    localStorage.setItem(key, value);
+  	// Yippee! We can use localStorage awesomeness
+  }
+  else {
+    console.log("localstorage is NOT available. :(((");
+  	// Too bad, no localStorage for us
+  }
 }
