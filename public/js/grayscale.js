@@ -46,6 +46,8 @@ function getUserLocation(zipCode, callback) {
           console.error('error: location not found');
         } else {
           var location = {};
+          document.getElementById('zipCodeInput').style.border = 'none';
+          document.getElementById('locationError').style.visibility = 'hidden';
           //geoLocation = JSON.parse(geoLocation);
           // console.log(geoLocation.results[0].geometry.location.lat);
           // console.log(geoLocation.results[0].geometry.location.lng);
@@ -60,10 +62,9 @@ function getUserLocation(zipCode, callback) {
 
 //Google maps event handlers
 document.getElementById('zipButton').addEventListener('click', function(){
-  console.log("button clicked");
   var zipCode = document.getElementById('zipCodeInput').value;
-  console.log(zipCode);
   initMap(zipCode);
+
 });
 
 // Google Maps Scripts
@@ -72,16 +73,84 @@ var map = null;
 google.maps.event.addDomListener(window, 'load', initMap('80209') );
 
 
+function getLocalTheatres(zipcode){
+  getUserLocation(zipcode, function(locationLatLng){
+
+    locationLatLng = new google.maps.LatLng(locationLatLng.lat, locationLatLng.lng)
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: locationLatLng,
+      zoom: 12
+    });
+
+    var request = {
+      location: locationLatLng,
+      rankBy: google.maps.places.RankBy.DISTANCE,
+      keyword: 'movie theatre',
+      type: 'movie_theater'
+    }
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, theaterCallback);
+  });
+}
+
+function theaterCallback(results, status){
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log(results[0]);
+
+    var theaterListing = document.getElementById('theaterListing');
+    while (theaterListing.firstChild){
+      theaterListing.removeChild(theaterListing.firstChild);
+    }
+
+    for ( var i = 0; i < 15; i++){
+      var div = document.createElement('div');
+      var a = document.createElement('a');
+      var h3 = document.createElement('h3');
+      var p = document.createElement('p');
+      a.setAttribute('onclick', "openTheaterWebpage('"+ results[i].place_id +"')");
+      h3.innerHTML = results[i].name;
+      p.innerHTML = results[i].vicinity;
+      a.appendChild(h3);
+      div.appendChild(a);
+      div.appendChild(p);
+      theaterListing.appendChild(div);
+    }
+  }
+}
+
+function openTheaterWebpage(placeId){
+  console.log(placeId);
+  getTheaterLink(placeId);
+}
+
+function getTheaterLink(theaterId){
+  var request2 = {
+    placeId: theaterId
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.getDetails(request2, detailsCallback);
+  function detailsCallback(place, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      // createMarker(place);
+      console.log("hello from details");
+      console.log(place.website);
+    }
+  }
+}
 
 function initMap(zipCode){
   // dependency injection - geocode the zipcode
-  getUserLocation(zipCode, init);
+
   document.getElementById('zipCodeInput').placeholder = zipCode;
   google.maps.event.addDomListener(window, 'resize', function() {
       getUserLocation(zipCode, function(location){
           map.panTo(new google.maps.LatLng(location.lat, location.lng)); //Denver 39.7376, -104.9897
       });
   });
+  getLocalTheatres(zipCode);
+  getUserLocation(zipCode, init);
 }
 
 function init(location) {
