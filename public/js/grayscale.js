@@ -97,19 +97,18 @@ function getLocalTheatres(zipcode){
 
 function theaterCallback(results, status){
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    console.log(results[0]);
-
     var theaterListing = document.getElementById('theaterListing');
     while (theaterListing.firstChild){
       theaterListing.removeChild(theaterListing.firstChild);
     }
 
-    for ( var i = 0; i < 15; i++){
+    for ( var i = 0; i < 9; i++){
       var div = document.createElement('div');
       var a = document.createElement('a');
       var h3 = document.createElement('h3');
       var p = document.createElement('p');
-      a.setAttribute('onclick', "openTheaterWebpage('"+ results[i].place_id +"')");
+      a.setAttribute('target', "_blank");
+      addTheaterLink(a, results[i].place_id);
       h3.innerHTML = results[i].name;
       p.innerHTML = results[i].vicinity;
       a.appendChild(h3);
@@ -120,12 +119,7 @@ function theaterCallback(results, status){
   }
 }
 
-function openTheaterWebpage(placeId){
-  console.log(placeId);
-  getTheaterLink(placeId);
-}
-
-function getTheaterLink(theaterId){
+function addTheaterLink(element, theaterId){
   var request2 = {
     placeId: theaterId
   };
@@ -133,9 +127,11 @@ function getTheaterLink(theaterId){
   service.getDetails(request2, detailsCallback);
   function detailsCallback(place, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      // createMarker(place);
-      console.log("hello from details");
-      console.log(place.website);
+      link = place.website;
+      element.setAttribute('href', link);
+    } else {
+      console.error("+==}========> Error: link not created: detail not found");
+      console.log(google.maps.places.PlacesServiceStatus);
     }
   }
 }

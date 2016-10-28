@@ -22,6 +22,7 @@ I am refactoring a site I was working on a while ago for personal use.
 
 ## TODO
   * display movie data from local theaters
+    * refactor map logic
     * add cookies to save last location searched to local storage
   * add way to recommend/invite movie to friend
   * replace current movie db and rating system with a better one - ? - rotten tomatoes
