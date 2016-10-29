@@ -81,11 +81,9 @@ function getLocalTheatres(zipcode){
   getUserLocation(zipcode, function(locationLatLng){
 
     locationLatLng = new google.maps.LatLng(locationLatLng.lat, locationLatLng.lng)
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: locationLatLng,
-      zoom: 12
-    });
+    var mapOptions = getMapOptions();
+    mapOptions.center = locationLatLng,
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     var request = {
       location: locationLatLng,
@@ -156,131 +154,13 @@ function initMap(zipCode){
 function init(location) {
       // Basic options for a simple Google Map
       // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-      var mapOptions = {
-          // How zoomed in you want the map to start at (always required)
-          zoom: 12,
 
-          // The latitude and longitude to center the map (always required)
-          center: new google.maps.LatLng(location.lat, location.lng), // Denver 39.7376, -104.9897
+      mapOptions = getMapOptions();
 
-          // Disables the default Google Maps UI components
-          disableDefaultUI: true,
-          scrollwheel: false,
-          draggable: false,
+      // The latitude and longitude to center the map (always required)
+      mapOptions.center = new google.maps.LatLng(location.lat, location.lng), // Denver 39.7376, -104.9897
 
-          // How you would like to style the map.
-          // This is where you would paste any style found on Snazzy Maps.
-          styles: [{
-              "featureType": "water",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 17
-              }]
-          }, {
-              "featureType": "landscape",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 20
-              }]
-          }, {
-              "featureType": "road.highway",
-              "elementType": "geometry.fill",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 17
-              }]
-          }, {
-              "featureType": "road.highway",
-              "elementType": "geometry.stroke",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 29
-              }, {
-                  "weight": 0.2
-              }]
-          }, {
-              "featureType": "road.arterial",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 18
-              }]
-          }, {
-              "featureType": "road.local",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 16
-              }]
-          }, {
-              "featureType": "poi",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 21
-              }]
-          }, {
-              "elementType": "labels.text.stroke",
-              "stylers": [{
-                  "visibility": "on"
-              }, {
-                  "color": "#000000"
-              }, {
-                  "lightness": 16
-              }]
-          }, {
-              "elementType": "labels.text.fill",
-              "stylers": [{
-                  "saturation": 36
-              }, {
-                  "color": "#000000"
-              }, {
-                  "lightness": 40
-              }]
-          }, {
-              "elementType": "labels.icon",
-              "stylers": [{
-                  "visibility": "off"
-              }]
-          }, {
-              "featureType": "transit",
-              "elementType": "geometry",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 19
-              }]
-          }, {
-              "featureType": "administrative",
-              "elementType": "geometry.fill",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 20
-              }]
-          }, {
-              "featureType": "administrative",
-              "elementType": "geometry.stroke",
-              "stylers": [{
-                  "color": "#000000"
-              }, {
-                  "lightness": 17
-              }, {
-                  "weight": 1.2
-              }]
-          }]
-      };
-
-
+      console.log(mapOptions);
       // Get the HTML DOM element that will contain your map
       // We are using a div with id="map" seen below in the <body>
       var mapElement = document.getElementById('map');
@@ -333,4 +213,128 @@ function saveToLocalStorage(key, value){
     console.log("localstorage is NOT available. :(((");
   	// Too bad, no localStorage for us
   }
+}
+
+function getMapOptions(){
+  var mapOptions = {
+      // How zoomed in you want the map to start at (always required)
+      zoom: 12,
+
+      // Disables the default Google Maps UI components
+      disableDefaultUI: true,
+      scrollwheel: false,
+      draggable: false,
+
+      // How you would like to style the map.
+      // This is where you would paste any style found on Snazzy Maps.
+      styles: [{
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 17
+          }]
+      }, {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 20
+          }]
+      }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 17
+          }]
+      }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 29
+          }, {
+              "weight": 0.2
+          }]
+      }, {
+          "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 18
+          }]
+      }, {
+          "featureType": "road.local",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 16
+          }]
+      }, {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 21
+          }]
+      }, {
+          "elementType": "labels.text.stroke",
+          "stylers": [{
+              "visibility": "on"
+          }, {
+              "color": "#000000"
+          }, {
+              "lightness": 16
+          }]
+      }, {
+          "elementType": "labels.text.fill",
+          "stylers": [{
+              "saturation": 36
+          }, {
+              "color": "#000000"
+          }, {
+              "lightness": 40
+          }]
+      }, {
+          "elementType": "labels.icon",
+          "stylers": [{
+              "visibility": "off"
+          }]
+      }, {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 19
+          }]
+      }, {
+          "featureType": "administrative",
+          "elementType": "geometry.fill",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 20
+          }]
+      }, {
+          "featureType": "administrative",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+              "color": "#000000"
+          }, {
+              "lightness": 17
+          }, {
+              "weight": 1.2
+          }]
+      }]
+  };
+  return mapOptions;
 }
