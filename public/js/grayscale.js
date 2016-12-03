@@ -72,7 +72,6 @@ document.getElementById('zipButton').addEventListener('click', function(){
 var map = null;
 var zipcode = localStorageInit();
 document.getElementById('zipCodeInput').value = zipcode;
-console.log('zipcode ' + zipcode);
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', initMap(zipcode) );
 
@@ -133,7 +132,7 @@ function addTheaterLink(element, theaterId){
       element.setAttribute('href', link);
     } else {
       console.error("+==}========> Error: link not created: detail not found");
-      console.log(google.maps.places.PlacesServiceStatus);
+      console.error(google.maps.places.PlacesServiceStatus);
     }
   }
 }
@@ -158,9 +157,9 @@ function init(location) {
       mapOptions = getMapOptions();
 
       // The latitude and longitude to center the map (always required)
-      mapOptions.center = new google.maps.LatLng(location.lat, location.lng), // Denver 39.7376, -104.9897
+      mapOptions.center = new google.maps.LatLng(location.lat, location.lng); // Denver 39.7376, -104.9897
 
-      console.log(mapOptions);
+      //console.log(mapOptions);
       // Get the HTML DOM element that will contain your map
       // We are using a div with id="map" seen below in the <body>
       var mapElement = document.getElementById('map');
@@ -195,22 +194,19 @@ function storageAvailable(type) {
 
 function localStorageInit(){
   if(!localStorage.getItem('zipcode')) {
-    return '80209';
+    return '80226';
   } else {
-    console.log('saved zipcode');
-    console.log(localStorage.getItem('zipcode'));
     return localStorage.getItem('zipcode');
   }
 }
 
 function saveToLocalStorage(key, value){
   if (storageAvailable('localStorage')) {
-    console.log("localstorage is available!");
     localStorage.setItem(key, value);
   	// Yippee! We can use localStorage awesomeness
   }
   else {
-    console.log("localstorage is NOT available. :(((");
+    console.error("localstorage not available - location not saved");
   	// Too bad, no localStorage for us
   }
 }

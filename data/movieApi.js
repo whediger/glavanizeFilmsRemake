@@ -6,7 +6,7 @@ require('dotenv').config();
 module.exports = {
   getUpcomingMovieData: function() {
     return new Promise(function(fulfill, reject){
-      request('https://api.themoviedb.org/3/movie/upcoming/?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
+      request('https://api.themoviedb.org/3/movie/upcoming?api_key=' + process.env.THEMOVIEDB_KEY + '&language=en-US&page=1&region=US',
         function(error, response, data){
           // console.log('data ', data);
           // console.log('response ', response);
@@ -44,8 +44,8 @@ module.exports = {
     var vote = 0;
     for ( var i = 0; i < movieNum; i++ ) {
       var isoDate = new Date(movieData.results[i].release_date);
+      //console.log('the day' +isoDate);
       var todaysDate = new Date();
-      tddaysDate = Date.now();
       todaysDate = todaysDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       isoDate = isoDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
       date = this.getMonth(movieData.results[i].release_date);
