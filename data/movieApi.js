@@ -76,7 +76,7 @@ module.exports = {
 
   getMoviesShowing: function(){
     return new Promise(function(fulfill, reject){
-      request('https://api.themoviedb.org/3/movie/now_playing?sort_by=popularity.desc&api_key=' + process.env.THEMOVIEDB_KEY,
+      request('https://api.themoviedb.org/3/movie/now_playing?api_key=' + process.env.THEMOVIEDB_KEY + '&language=en-US&page=1&region=US',
         function(error, response, data){
           // console.log('data ', data);
           // console.log('response ', response);
