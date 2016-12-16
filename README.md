@@ -17,7 +17,7 @@ I am refactoring a site I was working on a while ago for personal use.
   * node-sass
   * gimp for image manipulation
   * asynchronous programming
-  * integration with an api
+  * integration with several api's
   * HTML
 
 ## TODO
