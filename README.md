@@ -21,9 +21,6 @@ I am refactoring a site I was working on a while ago for personal use.
   * HTML
 
 ## TODO
-  * display movie data from local theaters
-    * refactor map logic
-  * add way to recommend/invite movie to friend
   * replace current movie db and rating system with a better one - ? - rotten tomatoes
   * Add auth for db use
     * save movie bucket list by different list types
